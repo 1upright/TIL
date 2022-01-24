@@ -15,4 +15,38 @@
   - [함수](./파이썬/함수)
   - [모듈](./파이썬/모듈)
   - [json](./파이썬/json)
+  - [메소드](./파이썬/메소드)
 
+
+
+얕은 복사(shallow copy)
+
+```python
+original_list = [1, 2, 3]
+copy_list = original_list # 같은 통을 바라보게 됨
+copy_list = original_list[:] # 복사 가능
+copy_list = list(original_list) # 복사 가능
+
+## 하지만
+original_list = [1, 2, [0, 1]]
+copy_list = original_list[:]
+
+copy_list[2][0] = 'h' # 이러면 (2차원 변경이 생길 경우) original_list도 함께 변경됨 
+```
+
+
+
+깊은 복사(deep copy)
+
+```python
+import copy
+a = [1, 2, ['a', 'b']]
+b = copy.deepcopy(a)
+print(a, b)
+b[2][0] = 0
+print(a, b)
+```
+
+[1, 2, ['a', 'b']] [1, 2, ['a', 'b']]
+
+[1, 2, ['a', 'b']] [1, 2, [0, 'b']]
