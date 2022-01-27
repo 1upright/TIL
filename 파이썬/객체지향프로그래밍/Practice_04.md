@@ -346,7 +346,7 @@ class Rectangle(Point):
          self.point1 = point1.x, point1.y # 튜플 형태
          self.point2 = point2.x, point2.y
 
-     def get_area(self):
+    def get_area(self):
          return abs((self.point1[0] - self.point2[0]) * (self.point1[1] - self.point2[1]))
         
 ### 교수님의 방법
