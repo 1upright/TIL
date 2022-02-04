@@ -113,7 +113,7 @@ aside {
 }
 /* 주석의 조건에 맞추기 위해 그냥 내가 새로 만들어 버린 class 두개 */
 .padding-4 {
-  padding : 4px;
+  padding: 4px;
 }
 
 .margin-4 {
