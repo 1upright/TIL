@@ -15,10 +15,8 @@
 </head>
 <body>
   <header class="bg-lightgrey m-4 p-4 border br-4">
-    <h1>
-      <h1 class="text-center">
-        header
-      </h1>
+    <h1 class="text-center">
+      header
     </h1>
   </header>
   <nav class="bg-lightgrey m-4 p-4 border br-4">
