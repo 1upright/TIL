@@ -1,1 +1,1 @@
-New Thing I Learned via [web.dev/learn/css](web.dev/learn/css)
+New Thing I Learned via [web.dev/learn/css](web.dev/learn/css/)
