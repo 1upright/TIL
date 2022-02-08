@@ -38,7 +38,7 @@ Initialized empty Git repository in C:/Users/takhe/Desktop/first/.git/
 
 ## 2. 버전 기록하기
 
-![git 구조](Git%20%EC%82%AC%EC%9A%A9%EB%B2%95.assets/git%20%EA%B5%AC%EC%A1%B0.jpg)
+![git 구조](Git_%EC%82%AC%EC%9A%A9%EB%B2%95.assets/git%20%EA%B5%AC%EC%A1%B0.jpg)
 
 ### add
 
@@ -118,9 +118,11 @@ $ git log
 
 [관련 문서 - Git 수정하고 저장소에 저장하기](https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%88%98%EC%A0%95%ED%95%98%EA%B3%A0-%EC%A0%80%EC%9E%A5%EC%86%8C%EC%97%90-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0)
 
-![image-20220113101851253-16420396855881](Git%20%EC%82%AC%EC%9A%A9%EB%B2%95.assets/image-20220113101851253-16420396855881.png)
+![image-20220113101851253-16420396855881](Git_%EC%82%AC%EC%9A%A9%EB%B2%95.assets/image-20220113101851253-16420396855881.png)
 
-![image-20220113101938077](Git%20%EC%82%AC%EC%9A%A9%EB%B2%95.assets/image-20220113101938077.png)
+![image-20220113101938077](Git_%EC%82%AC%EC%9A%A9%EB%B2%95.assets/image-20220113101938077.png)
+
+
 
 ### git에서 관리하는 파일 변경사항 상태
 
