@@ -10,11 +10,11 @@
 
 - Pseudocode(의사코드, 슈도코드)
 
-![의사코드](%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EC%B4%88.assets/%EC%9D%98%EC%82%AC%EC%BD%94%EB%93%9C.PNG)
+![의사코드](List.assets/%EC%9D%98%EC%82%AC%EC%BD%94%EB%93%9C.PNG)
 
 - 순서도
 
-![순서도](%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EC%B4%88.assets/%EC%88%9C%EC%84%9C%EB%8F%84.PNG)
+![순서도](List.assets/%EC%88%9C%EC%84%9C%EB%8F%84.PNG)
 
 
 
@@ -113,7 +113,7 @@ def BubbleSort(a, N):
 2. 각 항목의 앞에 위치할 항목의 개수를 반영하기 위해 counts의 원소를 누적 분포의 형태로 조정
 3. 뒤에서부터 counts[data[j]]를 감소시키고 temp[counts[data[j]]에 data[j]를 삽입 *반복
 
-![카운팅정렬](%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EA%B8%B0%EC%B4%88.assets/%EC%B9%B4%EC%9A%B4%ED%8C%85%EC%A0%95%EB%A0%AC.PNG)
+![카운팅정렬](List.assets/%EC%B9%B4%EC%9A%B4%ED%8C%85%EC%A0%95%EB%A0%AC.PNG)
 
 - 코드
 
