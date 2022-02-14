@@ -9,12 +9,10 @@ N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
 ```
 
-
-
 #### 0으로 감싸기
 
 ```python
-arr = [[0]*(N+2)] + [[0]+list(map(int, input().split))+[0] for _ in range(N)] + [[0]*(N+2)]
+arr = [[0]*(N+2)] + [[0]+list(map(int, input().split()))+[0] for _ in range(N)] + [[0]*(N+2)]
 ```
 
 
