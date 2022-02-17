@@ -102,7 +102,7 @@ False
 
 #### 문자열 숫자를 정수로 변환
 
-- c언어의 `atoi()` : ascii to int
+- c언어의 `atoi()` : char to int
 - 파이썬에서는 `int()`로 가능
 
 ```python
