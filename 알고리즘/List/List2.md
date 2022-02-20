@@ -35,7 +35,7 @@ for i in range(n):
 # 지그재그 순회
 for i in range(n):
     for j in range(m):
-        arr[i][j + (m-1-2*j)*(i%2)]
+        arr[i][j + (m-1-2*j) * (i%2)]
 ```
 
 
@@ -228,7 +228,7 @@ def binary_search2(arr, low, high, key):
 
 > 주어진 자료들 중 가장 작은 값의 원소부터 차례대로 선택하여 위치를 교환하는 방식
 
-- 시간복잡도 : O<sub>(n)</sub>
+- 시간복잡도 : O<sub>(n<sup>2</sup>)</sub>
 - 방법
   1. 주어진 리스트에서 최소값을 찾는다
   2. 리스트의 맨 앞에 위치한 값과 교환
