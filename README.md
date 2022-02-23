@@ -39,3 +39,4 @@
   - [String](./알고리즘/String/String.md)
   - [Stack](./알고리즘/Stack)
     - [Stack](./알고리즘/Stack/Stack.md)
+    - [Stack2](./알고리즘/Stack/Stack2.md)
