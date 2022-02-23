@@ -171,3 +171,42 @@ for tc in range(1, T+1):
     print(f'#{tc} {cnt}')
 ```
 
+
+
+## 6) 기지국
+
+>A, B, C는 기지국이며 각각은 각 위치에서 동서남북으로 각 1개, 2개, 3개의 셀을 커버
+>
+>집이 위치한 곳은 H
+>
+>빈칸은 X
+>
+>기지국이 커버하지 못하는 집의 수는?
+
+```python
+di = [-1, 0, 1, 0]
+dj = [0, 1, 0, -1]
+eff = {1:'A', 2:'B', 3:'C'}
+ 
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    arr = [list(input()) for _ in range(N)]
+ 
+    for num in range(1, 4):
+        for i in range(N):
+            for j in range(N):
+                if arr[i][j] == eff[num]:
+                    for k in range(1, num+1):
+                        for l in range(4):
+                            if 0<=i+di[l]*k<N and 0<=j+dj[l]*k<N:
+                                if arr[i+di[l]*k][j+dj[l]*k] == 'H':
+                                    arr[i+di[l]*k][j+dj[l]*k] = 'X'
+    cnt = 0
+    for i in range(N):
+        for j in range(N):
+            if arr[i][j] == 'H':
+                cnt += 1
+    print(f'#{tc} {cnt}')
+```
+
