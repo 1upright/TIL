@@ -210,3 +210,40 @@ for tc in range(1, T+1):
     print(f'#{tc} {cnt}')
 ```
 
+
+
+## 7) 파리 퇴치 3
+
+> M의 세기로 스프레이를 십자, X자로 분사 했을 때 잡는 파리 최댓값?
+
+```python
+di = [-1, 0, 1, 0, -1, 1, 1, -1] # 상 하 좌 우 우상 우하 좌하 좌상
+dj = [0, 1, 0, -1, 1, 1, -1, -1]
+
+T = int(input())
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    max_cnt = 0
+
+    for i in range(N):
+        for j in range(N):
+            cnt = arr[i][j]
+            for k in range(1, M):
+                for l in range(4):
+                    if 0<=i+di[l]*k<N and 0<=j+dj[l]*k<N:
+                        cnt += arr[i+di[l]*k][j+dj[l]*k]
+            if cnt > max_cnt:
+                max_cnt = cnt
+
+            cnt = arr[i][j]
+            for k in range(1, M):
+                for l in range(4, 8):
+                    if 0 <=i+di[l]*k<N and 0<=j+dj[l]*k<N:
+                        cnt += arr[i+di[l]*k][j+dj[l]*k]
+            if cnt > max_cnt:
+                max_cnt = cnt
+
+    print(f'#{tc} {max_cnt}')
+```
+
