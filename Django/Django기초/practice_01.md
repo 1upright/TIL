@@ -4,7 +4,7 @@ https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=1
 
 에서 api 따와서 1000회 분량의 로또 번호를 비교하고
 
-![로또](practice_01.assets/%EB%A1%9C%EB%98%90.PNG)
+![로또](practice_01.assets/%EB%A1%9C%EB%98%90-16463026286431.PNG)
 
 와 같이 출력하기
 
@@ -48,14 +48,14 @@ def lotto(request):
                 cnt += 1
         if cnt == 6:
             cnt_rank[0] += 1
-        if cnt == 5:
+        elif cnt == 5:
             if bonus_num in random_num:
                 cnt_rank[1] += 1
             else:
                 cnt_rank[2] += 1
-        if cnt == 4:
+        elif cnt == 4:
             cnt_rank[3] += 1
-        if cnt == 3:
+        elif cnt == 3:
             cnt_rank[4] += 1
         else:
             cnt_rank[5] += 1
