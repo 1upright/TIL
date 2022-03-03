@@ -44,3 +44,5 @@
 - Django
   - [Django기초](./Django/Django기초)
     - [Django기초](./Django/Django기초/Django기초.md)
+    - [Django기초2](./Django/Django기초/Django기초2.md)
+
