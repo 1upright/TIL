@@ -7,8 +7,11 @@
 ## 목차
 
 - [Markdown](./Markdown/Markdown_사용법.md)
+
 - [Git](./Git/Git_사용법.md)
+
 - [원격저장소(Github)](./원격저장소(Github)/Github_활용법.md)
+
 - 파이썬
   - [파이썬기초](./파이썬/파이썬기초)
     - [파이썬 기초](./파이썬/파이썬기초/파이썬기초.md)
@@ -25,6 +28,7 @@
   - [객체지향프로그래밍(OOP)](./파이썬/객체지향프로그래밍)
     - [객체지향프로그래밍](./파이썬/객체지향프로그래밍/객체지향프로그래밍.md)
   - [api](./파이썬/api/api.md)
+  
 - Web
   - [HTML](./Web/HTML/HTML.md)
   - [CSS](./Web/CSS)
@@ -32,6 +36,7 @@
     - [Layout](./Web/CSS/Layout.md)
     - [Bootstrap](./Web/CSS/Bootstrap.md)
   - [반응형웹](./Web/반응형웹/반응형웹.md)
+  
 - 알고리즘
   - [List](./알고리즘/List)
     - [List](./알고리즘/List/List.md)
@@ -41,8 +46,13 @@
     - [Stack](./알고리즘/Stack/Stack.md)
     - [Stack2](./알고리즘/Stack/Stack2.md)
   - [Queue](./알고리즘/Queue/Queue.md)
+  
 - Django
   - [Django기초](./Django/Django기초)
+    
     - [Django기초](./Django/Django기초/Django기초.md)
-    - [Django기초2](./Django/Django기초/Django기초2.md)
+    
+  - [Form,URL](./Django/Form,URL/Form,URL.md)
+  
+    
 

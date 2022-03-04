@@ -1,5 +1,7 @@
 # Django기초
 
+- Django
+
 > Python Web framework
 
 1. 가상환경 생성 및 활성
