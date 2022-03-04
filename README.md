@@ -51,8 +51,5 @@
   - [Django기초](./Django/Django기초)
     
     - [Django기초](./Django/Django기초/Django기초.md)
-    
   - [Form,URL](./Django/Form,URL/Form,URL.md)
-  
-    
-
+  - [Static_files](./Django/Static_files/Static_files.md)
