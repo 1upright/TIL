@@ -136,4 +136,6 @@
 
 20. `$ pip install ipython django-extensions`(django extensions 설치)($ pip list로 확인 가능)
 
+20. settings.py의 INSTALLED_APPS에 `'django_extensions',` 집어넣기
+
 21. 이후 모델을 사용하여 UVT 패턴에 따라 개발

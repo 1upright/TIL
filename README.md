@@ -46,8 +46,7 @@
     - [Django기초](./Django/Django기초/Django기초.md)
   - [Form,URL](./Django/Form,URL/Form,URL.md)
   - [Static_files](./Django/Static_files/Static_files.md)
-  - model
-  - migrations
+  - [model](./Django/model/model.md)
   - CRUD
   - [Django요약](./Django/Django요약/Django요약.md)
 - [포켓볼](./포켓볼/포켓볼.md)
