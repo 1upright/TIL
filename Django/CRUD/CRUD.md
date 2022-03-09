@@ -101,11 +101,13 @@ def index(request):
     context = {
         'articles' : articles
     }
-    return render(request, 'index.html', context)
+    return render(request, 'articles/index.html', context)
 ```
 
 ```django
 {# articles/templates/articles/index.html #}
+{% extends 'base.html' %}
+
 {% block body %}
   <h1>안녕하세요</h1>
 
@@ -134,7 +136,7 @@ def index(request):
 ```python
 # articles/views.py
 def new(request):
-    return render(request, 'new.html')
+    return render(request, 'articles/new.html')
 ```
 
 ```django
@@ -186,7 +188,7 @@ def create(request):
     context = {
         'article': article
     }
-    return render(request, 'create.html', context)
+    return render(request, 'articles/create.html', context)
 ```
 
 ```django
@@ -239,7 +241,7 @@ def detail(request, pk):
     context = {
         'article': article
     }
-    return render(request, 'detail.html', context)
+    return render(request, 'articles/detail.html', context)
 ```
 
 ```django
@@ -327,7 +329,7 @@ def edit(request, pk):
     context = {
         'article': article
     }
-    return render(request, 'edit.html', context)
+    return render(request, 'articles/edit.html', context)
 ```
 
 ```django
