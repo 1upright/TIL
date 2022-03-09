@@ -215,7 +215,7 @@ def create(request):
     article.content = content
     article.save()
     
-    return redirect('articles:detail', article.pk')
+    return redirect('articles:detail', article.pk)
 ```
 
 
@@ -320,7 +320,7 @@ def delete(request, pk):
   - form tag(action, method)
   - input tag(name)
   - textarea tag(name)
-  - new.html과 비슷하지만 input과 textarea에서 value="작성된 내용"으로 해주면 깔끔
+  - new.html과 비슷하지만 input에서 value="작성된 제목"으로 해주고 textarea의 안에 작성된 내용을 넣어주면 깔끔
 
 ```python
 # articles/views.py
