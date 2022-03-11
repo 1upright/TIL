@@ -98,3 +98,19 @@ $ python manage.py sqlmigrate app_name 0001
   - $ pip install ipython django-extensions 후 settings.py의 INSTALLED_APPS에 `'django_extensions',` 집어넣기
   - $ python manage.py shell_plus로 사용
 
+
+
+## admin 만들기
+
+```python
+# admin.py
+from django.contrib import admin
+from .models import Article
+
+# Register your models here.
+admin.site.register(Article)
+```
+
+- `$ python manage.py createsuperuser`
+- 사용자 이름, 이메일 주소, password, password(again) 정하고 y
+

@@ -130,6 +130,21 @@
 
 17. `$ python manage.py showmigrations`를 통해 마이그레이션 상태 확인(X 표시 뜨면 성공적으로 migrate된 것)
 
+18. admin.py 작성
+
+    ```python
+    # admin.py
+    from django.contrib import admin
+    from .models import Article
+    
+    # Register your models here.
+    admin.site.register(Article)
+    ```
+
+18. `$ python manage.py createsuperuser`
+
+18. 사용자 이름, 이메일 주소, password, password(again) 정하고 y
+
 18. db.sqlite3에 Open Database를 해서 잘 되고 있는지 확인
 
 19. 모델을 수정하게 된다면 터미널에서 `1 enter enter` 누르면 디폴트 값으로 필드 설정하여 수정 가능
