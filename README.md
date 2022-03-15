@@ -43,7 +43,8 @@
   - [Stack](./알고리즘/Stack)
     - [Stack](./알고리즘/Stack/Stack.md)
     - [Stack2](./알고리즘/Stack/Stack2.md)
-  - [Queue](./알고리즘/Queue/Queue.md)
+  - [Queue](./알고리즘/Queue)
+    - [Queue](./알고리즘/Queue/Queue.md)
 - Django
   - [Django기초](./Django/Django기초)
     - [Django기초](./Django/Django기초/Django기초.md)
