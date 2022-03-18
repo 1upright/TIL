@@ -75,6 +75,40 @@ for tc in range(1, 11):
     print(f'#{tc} {res}')
 ```
 
+```python
+# 교수님 풀이
+def BFS(s):
+    q = []
+    v = [0]*101
+ 
+    q.append(s)
+    v[s] = 1
+    sol = s
+ 
+    while q:
+        c = q.pop(0)
+        if v[sol]<v[c] or v[sol]==v[c] and sol<c:
+            sol = c
+ 
+        for j in range(1, 101):
+            if adj[c][j] and v[j]==0:
+                q.append(j)
+                v[j]=v[c]+1
+    return sol
+ 
+T = 10
+# T = int(input())
+for test_case in range(1, T + 1):
+    N, S = map(int, input().split())
+    lst = list(map(int, input().split()))
+    # [1] lst 연결값을 인접행렬에 저장
+    adj = [[0]*101 for _ in range(101)]
+    for i in range(0, len(lst), 2):
+        adj[lst[i]][lst[i+1]]=1
+    ans = BFS(S)
+    print(f'#{test_case} {ans}')
+```
+
 
 
 ## 3) [장훈이의 높은 선반](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV2b7Yf6ABcBBASw&categoryId=AV2b7Yf6ABcBBASw&categoryType=CODE&problemTitle=%EC%9E%A5%ED%9B%88%EC%9D%B4&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
@@ -83,29 +117,52 @@ for tc in range(1, 11):
 def boo(i, n, s, rs):
     global res
     if s >= B:
-        if s<res:
+        if s < res:
             res = s
- 
+
     elif i == n:
         return
- 
+
     elif s + rs < B:
         return
- 
+
     else:
-        bit[i] = 1
-        boo(i+1, n, s + staff[i], rs - staff[i])
-        bit[i] = 0
-        boo(i+1, n, s, rs - staff[i])
- 
+        boo(i + 1, n, s + staff[i], rs - staff[i])
+        boo(i + 1, n, s, rs - staff[i])
+
 T = int(input())
-for tc in range(1, T+1):
+for tc in range(1, T + 1):
     N, B = map(int, input().split())
     staff = list(map(int, input().split()))
-    bit = [0]*N
     res = sum(staff)
     boo(0, N, 0, sum(staff))
-    print(f'#{tc} {res-B}')
+    print(f'#{tc} {res - B}')
+```
+
+```python
+def DFS(n, ssum):
+    global ans
+     
+    if ssum >= B+ans:
+        return
+     
+    if n==N:
+        if ssum >= B and ans > ssum-B:
+            ans = ssum-B
+        return
+ 
+    DFS(n+1, ssum+lst[n]) # 포함하는 경우
+    DFS(n+1, ssum)  # 포함하지 않는 경우
+ 
+ 
+T = int(input())
+# T = 10
+for test_case in range(1, T + 1):
+    N, B = map(int, input().split())
+    lst = list(map(int, input().split()))
+    ans = 12345678
+    DFS(0, 0)
+    print(f'#{test_case} {ans}')
 ```
 
 
@@ -141,6 +198,45 @@ for tc in range(1, T+1):
             cnt = 1
              
     print(f'#{tc} {num} {max_cnt}')
+```
+
+```python
+# 교수님 풀이
+def BFS(si, sj):
+    q = []
+    s = []
+ 
+    q.append((si,sj))
+    v[si][sj]=1
+    s.append(arr[si][sj])
+ 
+    while q:
+        ci,cj = q.pop(0)
+        for di,dj in ((-1,0),(1,0),(0,-1),(0,1)):
+            ni,nj = ci+di, cj+dj
+            if 0<=ni<N and 0<=nj<N and v[ni][nj]==0 and \
+                abs(arr[ci][cj]-arr[ni][nj])==1:
+                q.append((ni,nj))
+                v[ni][nj]=1
+                s.append(arr[ni][nj])
+    return min(s), len(s)                
+ 
+# T = 10
+T = int(input())
+for test_case in range(1, T + 1):
+    N = int(input())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    v = [[0]*N for _ in range(N)]
+    num = N*N
+    cnt = 0
+    for i in range(N):
+        for j in range(N):
+            if v[i][j]==0:
+                tn, tc = BFS(i, j)
+                if cnt<tc or cnt==tc and num>tn:
+                    cnt=tc
+                    num=tn
+    print(f'#{test_case} {num} {cnt}')
 ```
 
 
@@ -191,6 +287,43 @@ for tc in range(1, T+1):
             if visited[i][j]:
                 cnt += 1
     print(f'#{tc} {cnt}')
+```
+
+```python
+# 교수님 풀이
+pipe = [[0,0,0,0],[1,1,1,1],[1,1,0,0],[0,0,1,1],[1,0,0,1],[0,1,0,1],[0,1,1,0],[1,0,1,0]]
+di, dj = (-1,1,0,0), (0,0,-1,1)
+opp = [1,0,3,2]
+def BFS(N, M, si, sj, L):
+    q = []
+    v = [[0]*M for _ in range(N)]
+ 
+    q.append((si,sj))
+    v[si][sj]=1
+    cnt = 1
+ 
+    while q:
+        ci,cj = q.pop(0)
+ 
+        if v[ci][cj]==L:
+            return cnt
+ 
+        for k in range(4):
+            ni,nj = ci+di[k], cj+dj[k]
+            if 0<=ni<N and 0<=nj<M and v[ni][nj]==0 and\
+                pipe[arr[ci][cj]][k] and pipe[arr[ni][nj]][opp[k]]:
+                q.append((ni,nj))
+                v[ni][nj]=v[ci][cj]+1
+                cnt+=1
+    return cnt
+ 
+# T = 10
+T = int(input())
+for test_case in range(1, T + 1):
+    N, M, R, C, L = map(int, input().split())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    ans = BFS(N, M, R, C, L)
+    print(f'#{test_case} {ans}')
 ```
 
 
@@ -244,6 +377,34 @@ for tc in range(1, T+1):
     print(f'#{tc} {min_cnt}')
 ```
 
+```python
+# 교수님 풀이
+def DFS(n, alst, blst):
+    global ans
+    if n==N:
+        if len(alst)==len(blst):
+            asum = bsum = 0
+            for i in range(len(alst)):
+                for j in range(len(alst)):
+                    asum += arr[alst[i]][alst[j]]
+                    bsum += arr[blst[i]][blst[j]]
+            if ans > abs(asum-bsum):
+                ans = abs(asum-bsum)
+        return
+ 
+    DFS(n+1, alst+[n], blst)
+    DFS(n+1, alst, blst+[n])
+ 
+# T = 10
+T = int(input())
+for test_case in range(1, T + 1):
+    N = int(input())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    ans = 12345678
+    DFS(0, [], [])
+    print(f'#{test_case} {ans}')
+```
+
 
 
 ## 7) [세제곱근을 찾아라](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXVyCaKugQDFAUo&categoryId=AWXVyCaKugQDFAUo&categoryType=CODE&problemTitle=%EC%84%B8%EC%A0%9C%EA%B3%B1%EA%B7%BC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
@@ -256,5 +417,27 @@ for t in range(1, int(input())+1):
         if i**3==N:
             r = i
     print(f'#{t} {r}')
+```
+
+```python
+def f(N):
+    s = 0
+    e = 1000000
+    while s <= e:
+        m = (s + e) // 2
+        if arr[m] == N:  # 찾음
+            return m
+        elif arr[m] < N:
+            s = m+1
+        else:
+            e = m-1
+    return -1
+ 
+T = int(input())
+arr = [x*x*x for x in range(1000001)]
+for tc in range(1, T+1):
+    N = int(input())
+ 
+    print(f'#{tc} {f(N)}')
 ```
 
