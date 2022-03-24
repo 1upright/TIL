@@ -47,6 +47,8 @@
     - [Queue](./알고리즘/Queue/Queue.md)
   - [Tree](./알고리즘/Tree)
     - [Tree](./알고리즘/Tree/Tree.md)
+  - [Start](./알고리즘/Start)
+    - [Start](./알고리즘/Start/Start.md)
 - Django
   - [Django기초](./Django/Django기초)
     - [Django기초](./Django/Django기초/Django기초.md)
@@ -57,8 +59,5 @@
   - [Django요약](./Django/Django요약/Django요약.md)
 - [포켓볼](./포켓볼/포켓볼.md)
 - [SQL](./SQL/SQL.md)
-- [CT](./CT)
-  - [CT](./CT/CT.md)
-  - [start](./CT/start.md)
-
+- [CT](./CT/CT.md)
 
