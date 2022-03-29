@@ -49,6 +49,7 @@
     - [Tree](./알고리즘/Tree/Tree.md)
   - [Start](./알고리즘/Start)
     - [Start](./알고리즘/Start/Start.md)
+  - [Bruteforce_Greedy](./알고리즘/Bruteforce_Greedy)
 - Django
   - [Django기초](./Django/Django기초)
     - [Django기초](./Django/Django기초/Django기초.md)
