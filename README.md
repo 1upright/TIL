@@ -50,6 +50,8 @@
   - [Start](./알고리즘/Start)
     - [Start](./알고리즘/Start/Start.md)
   - [Bruteforce_Greedy](./알고리즘/Bruteforce_Greedy)
+  - [분할정복](./알고리즘/분할정복)
+    - [분할정복](./알고리즘/분할정복/분할정복.md)
 - Django
   - [Django기초](./Django/Django기초)
     - [Django기초](./Django/Django기초/Django기초.md)
