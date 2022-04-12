@@ -336,6 +336,23 @@
   {% endif %}
   ```
 
+  ```django
+  <!-- accounts/signup.html -->
+  
+  {% extends 'base.html' %}
+  
+  {% block content %}
+    <h1>회원가입</h1>
+    <hr>
+    <form action="{% url 'accounts:signup' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit">
+    </form>
+    <a href="{% url 'articles:index' %}">back</a>
+  {% endblock content %}
+  ```
+  
   
 
 #### 회원 탈퇴
@@ -451,6 +468,22 @@ def delete(request):
   {% endif %}
   ```
 
+  ```django
+  <!-- accounts/update.html -->
+  {% extends 'base.html' %}
+  
+  {% block content %}
+    <h1>회원정보수정</h1>
+    <hr>
+    <form action="{% url 'accounts:update' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit">
+    </form>
+    <a href="{% url 'articles:index' %}">back</a>
+  {% endblock content %}
+  ```
+  
   
 
 ##### 비밀번호 변경
@@ -491,4 +524,20 @@ def delete(request):
       }
       return render(request, 'accounts/change_password.html', context)
   ```
-
+  ```django
+  <!-- accounts/change_password.html -->
+  {% extends 'base.html' %}
+  
+  {% block content %}
+    <h1>비밀번호변경</h1>
+    <hr>
+    <form action="{% url 'accounts:change_password' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit">
+    </form>
+    <a href="{% url 'articles:index' %}">back</a>
+  {% endblock content %}
+  ```
+  
+  
