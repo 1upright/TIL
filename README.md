@@ -66,6 +66,7 @@
   - [Requests_Mediafiles](./Django/Requests_Mediafiles/Requests_Mediafiles.md)
   - [AuthenticationSystem](./Django/AuthenticationSystem/AuthenticationSystem.md)
   - [ForeignKey](./Django/ForeignKey/ForeignKey.md)
+  - [CustomizingAuthentication](./Django/CustomizingAuthentication/CustomizingAuthentication.md)
 - [포켓볼](./포켓볼/포켓볼.md)
 - [SQL](./SQL/SQL.md)
 - [CT](./CT/CT.md)
