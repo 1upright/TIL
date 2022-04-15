@@ -11,6 +11,7 @@
   - [Git사용법](./Git/Git_사용법.md)
   - [Branch](./Git/Branch.md)
   - [BranchMerge](./Git/BranchMerge.md)
+  - [UndoingThings](./Git/UndoingThings.md)
 - [원격저장소(Github)](./원격저장소(Github)/Github_활용법.md)
 - 파이썬
   - [파이썬기초](./파이썬/파이썬기초)
