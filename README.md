@@ -76,4 +76,7 @@
 - [포켓볼](./포켓볼/포켓볼.md)
 - [SQL](./SQL/SQL.md)
 - [CT](./CT/CT.md)
-- [JavaScript](./JavaScript/JavaScript기초/JavaScript기초.md)
+- JavsScript
+  - [JavaScript기초](./JavaScript/JavaScript기초)
+    - [JavaScript기초](./JavaScript/JavaScript기초/JavaScript기초.md)
+    - [JavaScript기초2](./JavaScript/JavaScript기초/JavaScript기초2.md)
