@@ -199,7 +199,7 @@
   - expression : 매 반복 시행 이후 평가되는 부분
 
   ```javascript
-  for (let i = 0; i < 6, i++) {
+  for (let i = 0; i < 6; i++) {
       console.log(i)
   }
   ```
