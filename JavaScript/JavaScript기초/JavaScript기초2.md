@@ -320,11 +320,11 @@ const add = (a, b) => a + b
 
 - array.some(callback(element[, index[, array]]))
 
-  - 배열의 요소 중 하나라도 주어진 반별 함수를 통과하면 참을 반환
+  - 배열의 요소 중 하나라도 주어진 판별 함수를 통과하면 참을 반환
 
 - array.every(callback(element[, index[, array]]))
 
-  - 배열의 모든 요소가 주어진 반별 함수를 통과하면 참을 반환
+  - 배열의 모든 요소가 주어진 판별 함수를 통과하면 참을 반환
 
 
 
