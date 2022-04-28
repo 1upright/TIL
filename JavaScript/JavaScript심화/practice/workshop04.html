@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="/todos/">
+    <input type="text">
+    <button>Add</button>
+  </form>
+  <ul></ul>
+
+  <script>
+    /*
+    [필수사항]	
+      form에서 submit 이벤트가 발생되었을 때 input에 작성된 값이 todo로 추가된다.
+      todo는 ul 태그의 li 태그로 추가된다.
+      todo가 추가된 후 input value의 값은 초기화 된다.
+      
+      (선택) 빈 값인 데이터는 입력을 방지한다.
+      빈 값이면 알림창을 띄워 값을 입력하도록 안내한다.
+    */
+    const form = document.querySelector('form')
+    const todoInput = document.querySelector('input')
+    const todos = document.querySelector('ul')
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+      if (todoInput.value) {
+        const li = document.createElement('li')
+        li.innerText = todoInput.value
+        todos.appendChild(li)
+        event.target.reset()
+      } else {
+        alert('값을 입력하세요!')
+      }
+    })
+  </script>
+</body>
+
+</html>
