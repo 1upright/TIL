@@ -82,7 +82,8 @@
     - [JavaScript기초2](./JavaScript/JavaScript기초/JavaScript기초2.md)
   - [JavaScript심화](./JavaScript/JavaScript심화)
     - [JavaScript심화](./JavaScript/JavaScript심화/JavaScript심화.md)
-  - [AsynchronousJavaScript](./JavaScript/AsynchronousJavaScript/AsynchronousJavaScript.md)
+  - [AsynchronousJavaScript](./JavaScript/AsynchronousJavaScript)
+    - [AsynchronousJavaScript](./JavaScript/AsynchronousJavaScript/AsynchronousJavaScript.md)
 - Vue
   - [Vue 기초](./Vue/Vue기초.md)
   - [Vue CLI](./Vue/VueCLI.md)
