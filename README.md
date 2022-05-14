@@ -73,6 +73,7 @@
   - [M:N](./Django/M대N/M대N.md)
   - [REST API](./Django/RESTAPI/RESTAPI.md)
   - [REST API(M:N), Fixtures](./Django/RESTAPI(mtm)_Fixtures/RESTAPI(mtm)_Fixtures.md)
+  - [서버 배포](./Django/서버배포/서버배포.md)
 - [포켓볼](./포켓볼/포켓볼.md)
 - [SQL](./SQL/SQL.md)
 - [CT](./CT/CT.md)
