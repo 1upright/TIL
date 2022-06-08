@@ -54,6 +54,17 @@
 
 
 
+## 자바 API 문서
+
+- Java API
+  - Java로 프로그램을 만드는데 필요한 주요 기능을 미리 만들어서 제공
+- Java API 문서
+  - Java API가 제공하는 기능에 대한 상세한 정보 제공
+- Java API 문서 설치
+  - oracle.com에서 다운
+
+
+
 ## 자바 프로그램
 
 - javac.exe
@@ -94,3 +105,5 @@
       }
   }
   ```
+  
+- ctrl + space : 자동완성
