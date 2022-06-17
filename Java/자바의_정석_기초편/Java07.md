@@ -712,3 +712,563 @@ class FireEngine extends Car {
 }
 ```
 
+
+
+## instanceof 연산자
+
+- 참조변수의 형변환 가능여부 확인에 사용. 가능하면 true 반화
+
+- 형변환 전에 반드시 instanceof로 확인해야 함
+
+  ```java
+  void doWork(Car c) {
+      if (c instanceof FireEngine) { // 1. 형변환 가능한지 확인
+          FireEngine fe = (FireEngine) c; // 2. 형변환
+          // 형변환을 하는 이유 : 인스턴스의 원래 기능을 모두 사용하려고
+          // Car 타입의 리모콘인 c로는 water()를 호출할 수 없으니까 리모콘을 FireEngine 타입으로 바꿔서 water() 호출
+          fe.water();
+          ...
+      }
+  }
+  ```
+
+- 참조변수의 형변환은 왜 하나요?
+
+  - 참조변수(리모콘)을 변경함으로써 사용할 수 있는 멤버의 개수를 조절하기 위해서
+
+
+
+## 매개변수의 다형성
+
+- 참조형 매개변수는 메서드 호출시, 자신과 같은 타입 또는 자손타입의 인스턴스를 넘겨줄 수 있다
+- 장점
+  - 다형적 매개변수
+  - 하나의 배열로 여러 종류의 객체를 다루기
+- 다형성
+  - Tv t = new SmartTv();
+    - Tv => 조상, SmartTv => 자손
+  - 참조변수의 형변환 - 리모콘 바꾸기
+    - 사용 가능한 멤버 개수 조절
+  - instanceof 연산자
+    - 형변환 가능 여부 확인
+
+```java
+class Product {
+    int price;
+    int bonusPoint;
+    
+    Product (int price) {
+    	this.price = price;
+    	bonusPoint = (int)(price/10.0);
+	}
+}
+
+class Tv1 extends Product {
+    Tv1() {
+        super(100); // tv의 가격
+    }
+    
+    public String toString() { return "Tv";}
+}
+
+class Computer extends Product {
+    Computer() { super(200); }
+    
+    public String toString() { return "Computer"; }
+}
+
+class Buyer {
+    int money = 1000;
+    int bonusPoint = 0;
+    
+    void buy(Product p) {
+        if(money < p.price) {
+            System.out.println("잔액이 부족하여 물건을 살 수 없습니다.");
+           	return;
+        }
+        
+        money -= p.price;
+        bonusPoint += p.bonusPoint;
+        System.out.println(p + "을/를 구입하셨습니다.");
+    }
+}
+
+class Ex {
+    public static void main(String args[]) {
+        Buyber b = new Buyer();
+        
+        b.buy(new Tv1());
+        b.buy(new Computer());
+        
+        System.out.println("현재 남은 돈은 " + b.money + "만원입니다.");
+        System.out.println("현재 보너스점수는 " + b.bonusPoint + "점입니다.");
+    }
+}
+```
+
+Tv을/를 구입하셨습니다.
+
+Computer을/를 구입하셨습니다.
+
+현재 남은 돈은 700만원입니다.
+
+현재 보너스점수는 30점입니다.
+
+
+
+## 여러 종류의 객체를 배열로 다루기
+
+- 조상타입의 배열에 자손들의 객체를 담을 수 있다.
+
+  ```java
+  class Buyer {
+      int money = 1000;
+      int bonusPoint = 0;
+      
+      Product[] cart = new Product[10];
+      
+      int i = 0;
+      
+      void buy(Product p) {
+          if (money < p.price) {
+              System.out.println("잔액부족");
+              return;
+          }
+          
+          money -= p.price;
+          bonusPoint += p.bonusPoint;
+          cart[i++] = p;
+      }
+  }
+  ```
+
+  
+
+## 추상 클래스
+
+- 미완성 메서드를 갖고 있는 클래스
+
+  ```java
+  abstract class Player { // 추상클래스(미완성 클래스)
+      abstract void play(int pos); // 추상메서드(몸통{}이 없는 미완성 메서드)
+      abstract void stop(); // 추상메서드
+  }
+  ```
+
+- 다른 클래스 작성에 도움을 주기 위한 것. 인스턴스 생성 불가
+
+- 상속을 통해 추상 메서드를 완성해야 인스턴스 생성 가능
+
+
+
+#### 추상 메서드
+
+- 미완성 메서드. 구현부(몸통{}이 없는 메서드)
+
+- 꼭 필요하지만 자손마다 다르게 구현될 것으로 예상되는 경우
+
+  ```java
+  abstract class Player {
+      abstract void play(int pos);
+      abstract void stop();
+  }
+  
+  class AudioPlayer extends Player {
+      void play(int pos) {}
+      void stop)() {}
+  }
+  
+  abstract class AbstractPlayer extends Player {
+      void play(int pos) {}
+  }
+  ```
+
+- 작성
+
+  - 여러 클래스에 공통적으로 사용될 수 있는 추상클래스를 바로 작성하거나 기존클래스의 공통 부분을 뽑아서 추상클래스를 만든다
+
+  ```java
+  // 수정 전
+  class Marine {
+      int x, y;
+      void move(int x, int y) {}
+      void stop() {}
+      void stimPack() {}
+  }
+  class Tank {
+      int x, y;
+      void move(int x, int y) {}
+      void stop() {}
+      void changeModek() {}
+  }
+  ...
+  ```
+
+  ```java
+  // 수정 후
+  abstract class Unit {
+      int x, y;
+      abstract void move(int x, int y);
+      void stop() {}
+  }
+  
+  class Marine extends Unit {
+      void move(int x, int y) {}
+      void stimPack() {}
+  }
+  
+  class Tank extends Unit {
+      void move(int x, int y) {}
+      void changeMode() {}
+  }
+  ...
+  ```
+
+- 추상화된 코드는 구체화된 코드보다 유연하다(변경에 유리)
+
+  - GregorianCalendar cal = new GregorianCalendar();
+    - 구체적
+  - Calendar cal = Calendar.getInstance();
+    - 추상적(애매하게 썼음)
+
+
+
+## 인터페이스
+
+- 추상 메서드의 집합
+
+- 구현된 것이 전혀 없는 설계도. 껍데기(모든 멤버가 public)
+
+  ```java
+  interface 인터페이스이름 {
+      public static final 타입 상수이름 = 값; // public, static, final 생략 가능
+      public abstract 메서드이름(메개변수목록); // public, abstract 생략 가능
+  }
+  ```
+
+
+
+#### 인터페이스의 상속
+
+- 인터페이스의 조상은 인터페이스만 가능(Object가 최고 조상 아님)
+
+- 다중 상속이 가능(추상메서드는 충돌해도 문제 없음)
+
+  ```java
+  interface Fightable extends Movable, Attackable {}
+  
+  interface Movable {
+      void move(int x, int y);
+  }
+  
+  interface Attackable {
+      void attack(Unit u);
+  }
+  ```
+
+
+
+#### 인터페이스의 구현
+
+- 인터페이스에 정의된 추상 메서드를 완성하는 것
+
+- 인터페이스의 추상메서드 몸통{} 만들기(미완성 설계도 완성하기)
+
+- class 클래스이름 implements 인터페이스이름 {}
+
+  ```java
+  class Fighter implements Fightable {
+      public void move(int x, int y) {}
+      public void attack(Unit u) {}
+  }
+  ```
+
+- 일부만 구현하는 경우, 클래스 앞에 abstract를 붙여야 함
+
+  ```java
+  abstract class Fighter implements Fightable {
+      public void move(int x, int y)
+  }
+  ```
+
+
+
+#### 인터페이스를 이용한 다형성
+
+- 인터페이스도 구현 클래스의 부모
+
+- 인터페이스 타입 매개변수는 인터페이스 구현한 클래스의 객체만 가능
+
+- 인터페이스 메서드의 리턴타입으로 지정할 수 있다
+
+  ```java
+  abstract class Unit {
+      int x, y;
+      abstract void move(int x, int y);
+      void stop() { System.out.println("멈춥니다."); }
+  }
+  
+  interface Fightable {
+      void move(int x, int y);
+      void attack(Fightable f);
+  }
+  
+  class Fighter extends Unit2 implements Fightable {
+      public void move(int x, int y) {
+          System.out.println("["+x+","+y+"]로 이동");
+      }
+      public void attack(Fightable f) {
+          System.out.println(f+"를 공격");
+      }
+  }
+  
+  public class FighterTest {
+      public static void main(String[] args) {
+          // Unit2 f = new Fighter(); // Unit2에는 attack()이 없어서 호출 불가
+          Fightable f = new Fighter();
+          f.move(100, 200);
+          f.attack(new Fighter());
+          f.move(100, 200);
+          Fighter f2 = new Fighter();
+          f.attack(f2);
+      }
+  }
+  ```
+
+
+
+#### 인터페이스의 장점
+
+- 두 대상(객체) 간의 '연결, 대화, 소통'을 돕는 '중간 역할'을 한다
+
+- 선언(설계)과 구현을 분리시킬 수 있게 한다
+
+- 인터페이스 덕분에 B가 변경되어도 A는 안 바꿀 수 있게 된다(느슨한 결합)
+
+  - A(User)-B(Provider) 관계에서 B를 C로 변경할 때 A도 바꿔야하지만 A(User)-I(B(Provider)) 관계면 B를 C로 바꿔도 A(User)-I(C(Provider)) 관계가 되어 A를 변경할 필요가 없게 된다
+
+  ```java
+  class A {
+      public void method(B b) {
+          b.method();
+      }
+  }
+  
+  class B {
+      public void method() {
+          System.out.println("B클래스의 메서드");
+      }
+  }
+  
+  class C {
+      public void method() {
+          System.out.println("C클래스의 메서드");
+      }
+  }
+  
+  public class InterfaceTest {
+      public static void main(String[] args) {
+          A a = new A();
+          a.method(new C()); // A가 B를 사용(의존)
+      }
+  }
+  ```
+
+- 개발 시간을 단축할 수 있다
+
+- 변경에 유리한 유연한 설계가 가능하다
+
+- 표준화가 가능하다
+
+- 서로 관계없는 클래스들을 관계 맺어줄 수 있다
+
+
+
+## 디폴트 메서드, static 메서드
+
+- JDK 1.8부터 추가
+- 인터페이스에 새로운 메서드를 추가하기 어려움
+- 디폴트 메서드는 인스턴스 메서드(인터페이스 원칙 위반)
+- 디폴트 메서드가 기존의 메서드와 충돌할 때의 해결책
+  - 여러 인터페이스의 디폴트 메서드 간의 충돌	
+    - 인터페이스를 구현한 클래스에서 디폴트 메서드를 오버라이딩해야 한다
+  - 디폴트 메서드와 조상 클래스의 메서드 간의 충돌
+    - 조상 클래스의 메서드가 상속되고, 디폴트 메서드는 무시된다
+
+
+
+## 내부 클래스
+
+> 클래스 안의 클래스
+
+- 내부 클래스에서 외부 클래스의 멤버들을 쉽게 접근할 수 있다
+
+- 코드의 복잡성을 줄일 수 있다(캡슐화)
+
+  ```java
+  class AAA {
+      int i = 100;
+      BBB b = new BBB();
+      
+      class BBB {
+          void method() {
+              AAA a = new AAA();
+              System.out.println(a, i);
+          }
+      }
+  }
+  
+  class CCC {
+      BBB b = new BBB();
+  }
+  
+  public class InnerTest {
+      public static void main(String[] args) {
+          BBB b = new BBB();
+          b.method();
+      }
+  }
+  ```
+
+- 내부 클래스의 종류와 유효범위(scope)는 변수와 동일
+
+  - 인스턴스 클래스
+  - 스태틱 클래스
+  - 지역 클래스
+  - 익명 클래스
+
+
+
+#### 내부 클래스의 제어자와 접근성
+
+- 내부 클래스의 제어자는 변수에 사용 가능한 제어자와 동일
+
+  ```java
+  class Outer {
+      private int iv=0;
+      protected static int cv=0;
+      
+      void myMethod() {
+          int lv=0;
+      }
+  }
+  ```
+
+  ```java
+  class Outer {
+      private class InstanceInner {}
+      protected static class StaticInner {}
+      
+      void myMethod() {
+          class LocalInner {}
+      }
+  }
+  ```
+
+```java
+class Ex {
+    class InstanceInner {
+        int iv = 100;
+        static int cv = 100;
+        final static int CONST = 100;
+    }
+    
+    static class StaticInner {
+        int iv = 200;
+        static int cv = 200;
+    }
+    
+    void myMethod() {
+        class LocalInner {
+            int iv = 300;
+            static int cv = 300;
+            final static int CONST = 300;
+        }
+        
+        int i = LocalInner.CONST;
+    }
+    
+    public static void main(String args[]) {
+        System.out.println(InstanceInner.CONST);
+        System.out.println(StaticInner.cv);
+        System.out.println(LocalInner.CONST);
+    }
+}
+```
+
+```java
+class Outer {
+    private int outerIv = 0;
+    static int outerVb = 0;
+    
+    class InstanceInner {
+        int iiv = outerIv;
+        int iiv2 = outerCv;
+    }
+    
+    static class StaticInner {
+        static int scv = outerCv;
+    }
+    
+    void myMethod() {
+        int lv = 0;
+        final int LV = 0;
+        
+        class LocalInner {
+            int liv = outerIv;
+            int liv2 = outerCv;
+            int liv3 = lv;
+            int liv4 = LV;
+            
+            void method() {
+                System.out.println(lv);
+            }
+        }
+    }
+}
+```
+
+
+
+## 익명 클래스
+
+- 이름이 없는 일회용 클래스. 정의와 생성을 동시에
+
+  ```java
+  new 조상클래스이름() {
+      
+  }
+  
+  new 구현인터페이스이름() {
+      
+  }
+  ```
+
+  ```java
+  class Ex {
+      Object iv = new Object() { void method(){} };
+      static Object cv = new Object() { void method(){} };
+      
+      void myMethod() {
+          Object lv = new Object(){ void method(){} };
+      }
+  }
+  ```
+
+  ```java
+  import java.awt.*;
+  import java.awt.event.*;
+  
+  class Ex {
+      public static void main(String[] args) {
+          Button b = new Button("Start");
+          b.addActionListener(new EventHandler());
+      }
+  }
+  
+  class EventHandler implements ActionListener {
+      public void actionPerformed(ActionEvent e) {
+          System.out.println("ActionEvent occurred!!")
+      }
+  }
+  ```
