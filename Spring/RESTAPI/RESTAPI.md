@@ -125,7 +125,7 @@ public @ResponseBody String idCheck(@RequestParam("ckid") String checkId) throws
       
       <select id="listMember" resultType="memberDto">
       	select userid, userpwd, username, email, date_format(joindate, '%y.%m.%d') joindate
-          from ssafy member
+          from ssafy_member
           order by joindate desc;
       </select>
   </mapper>
@@ -181,5 +181,187 @@ public @ResponseBody String idCheck(@RequestParam("ckid") String checkId) throws
   }
   ```
 
-  
 
+
+
+#### 회원 목록
+
+- AdminController.java
+
+  ```java
+  @RequestMapping(value = "/user", method = RequestMethod.POST, headers = { "Content-type=application/json" })
+  public List<MemberDto> userRegister(@RequestBody MemberDto memberDto) throws Exception {
+      memberService.registerMember(memberDto);
+      return memberService.listMember();
+  }
+  ```
+
+  - 이러면 admin 로그인하고 회원 목록에서 등록하면 바로 list에 올릴 수 있다(모달 창이 나왔다가 등록 후 사라짐, 새로고침X)
+
+  ```java
+  @RequestMapping(value = "/user/{userid}", method = RequestMethod.GET, headers = { "Content-type=application/json" })
+  public MemberDto userInfo(@PathVariable("userid") String userid) throws Exception {
+      return memberService.getMember(userid);
+  }
+  ```
+
+  - 이러면 list에서 아이디를 더블클릭하면 회원정보가 뜬다
+
+
+
+#### 회원정보 수정
+
+- list.jsp
+
+  ```jsp
+  // 회원 정보 수정 보기.
+  $(document).on("click", ".modiBtn", function() {
+  	let mid = $(this).parents("tr").attr("data-id");
+  	$("#view_" + mid).css("display", "none");
+  	$("#mview_" + mid).css("display", "");
+  });
+  
+  // 회원 정보 수정 실행.
+  $(document).on("click", ".modifyBtn", function() {
+  	let mid = $(this).parents("tr").attr("data-id");
+  	let modifyinfo = JSON.stringify({
+  				"userId" : mid, 
+  				"userPwd" : $("#userpwd" + mid).val(), 
+  				"email" : $("#email" + mid).val()
+  				//"address" : $("#address" + mid).val()
+  			   });
+  	$.ajax({
+  		url:'${root}/admin/user',  
+  		type:'PUT',
+  		contentType:'application/json;charset=utf-8',
+  		dataType:'json',
+  		data: modifyinfo,
+  		success:function(users) {
+  			makeList(users);
+  		},
+  		error:function(xhr,status,msg){
+  			console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+  		}
+  	});
+  });
+  
+  // 회원 정보 수정 취소.
+  $(document).on("click", ".cancelBtn", function() {
+  	let mid = $(this).parents("tr").attr("data-id");
+  	$("#view_" + mid).css("display", "");
+  	$("#mview_" + mid).css("display", "none");
+  });
+  ```
+
+- AdminController.java
+
+  ```java
+  @RequestMapping(value = "/user", method = RequestMethod.PUT, headers = { "Content-type=application/json" })
+  public List<MemberDto> userModify(@RequestBody MemberDto memberDto) throws Exception {
+      memberService.updateMember(memberDto);
+      return memberService.listMember();
+  }
+  ```
+
+
+
+#### 회원 정보 삭제
+
+- list.jsp
+
+  ```jsp
+  // 회원 탈퇴.
+  $(document).on("click", ".delBtn", function() {
+  	if(confirm("정말 삭제?")) {
+  		let delid = $(this).parents("tr").attr("data-id");
+  		$.ajax({
+  			url:'${root}/admin/user/' + delid,  
+  			type:'DELETE',
+  			contentType:'application/json;charset=utf-8',
+  			dataType:'json',
+  			success:function(users) {
+  				makeList(users);
+  			},
+  			error:function(xhr,status,msg){
+  				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+  			}
+  		});
+  	}
+  });
+  ```
+
+- AdminController.java
+
+  ```java
+  @RequestMapping(value = "/user/{userid}", method = RequestMethod.DELETE, headers = { "Content-type=application/json" })
+  public List<MemberDto> userDelete(@PathVariable("userid") String userid) throws Exception {
+      memberService.deleteMember(userid);
+      return memberService.listMember();
+  }
+  ```
+
+
+
+#### RestController를 썼을 때
+
+- AdminController.java
+
+  ```java
+  @RestController
+  @RequestMapping("/admin")
+  @CrossOrigin("*")
+  public class AdminController {
+  
+  	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+  	
+  	@Autowired
+  	private MemberService memberService;
+  
+  	@GetMapping("/user")
+  	public @ResponseEntity<?> userList() throws Exception {
+  		List<MemberDto> list = memberService.listMember();
+  		if (list != null && !list.isEmpty()) {
+  			return new ResponseEntity<List<MemberDto>>(list, HttpStatus.OK);
+  		} else {
+  			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+  		}
+  	}
+  	
+  	@PostMapping("/user")
+  	public ResponseEntity<?> userRegister(@RequestBody MemberDto memberDto) throws Exception {
+  		memberService.registerMember(memberDto);
+  		return new ResponseEntity<List<MemberDto>>(memberService.listMember(), HttpStatus.OK);
+  	}
+  	
+  	@GetMapping("/user/{userid}")
+  	public ResponseEntity<?> userInfo(@PathVariable("userid") String userid) throws Exception {
+  		MemberDto memberDto = memberService.getMember(userid);
+  		if (memberDto != null) {
+  			return new ResponseEntity<MemberDto>(memberDto, HttpStatus.OK);
+  		} else {
+  			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+  		}
+  	}
+  	
+  	@PutMapping("/user")
+  	public ResponseEntity<?> userModify(@RequestBody MemberDto memberDto) throws Exception {
+  		memberService.updateMember(memberDto);
+  		return new ResponseEntity<List<MemberDto>>(memberService.listMember(), HttpStatus.OK);
+  //		나중에 int를 return 하는 서비스를 만든다면
+  //		int cnt = memberService.updateMember(memberDto);
+  //		return new ResponseEntity<Integer>(cnt, HttpStatus.CREATED);
+  	}
+  	
+  	@DeleteMapping("/user/{userid}")
+  	public ResponseEntity<?> userDelete(@PathVariable("userid") String userid) throws Exception {
+  		memberService.deleteMember(userid);
+  		return new ResponseEntity<List<MemberDto>>(memberService.listMember(), HttpStatus.OK);
+  	}
+  }
+  ```
+
+
+
+## 배포
+
+> SpringBoot를 사용하지 않는 Spring의 경우 war 파일로 만들어주어야 함
