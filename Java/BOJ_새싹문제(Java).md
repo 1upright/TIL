@@ -118,7 +118,14 @@ class Main{
 ## [꼬마 정민](https://www.acmicpc.net/problem/11382)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println(sc.nextLong() + sc.nextLong() + sc.nextLong());
+  }
+}
 ```
 
 
