@@ -78,7 +78,14 @@ class Main{
 ## [A+B](https://www.acmicpc.net/problem/1000) 
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println(sc.nextInt() + sc.nextInt());
+  }
+}
 ```
 
 
@@ -86,7 +93,14 @@ class Main{
 ## [A-B](https://www.acmicpc.net/problem/1001)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println(sc.nextInt() - sc.nextInt());
+  }
+}
 ```
 
 
@@ -94,7 +108,14 @@ class Main{
 ## [A×B](https://www.acmicpc.net/problem/10998)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println(sc.nextInt() * sc.nextInt());
+  }
+}
 ```
 
 
@@ -102,7 +123,20 @@ class Main{
 ## [사칙연산](https://www.acmicpc.net/problem/10869)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    System.out.println(a+b);
+    System.out.println(a-b);
+    System.out.println(a*b);
+    System.out.println(a/b);
+    System.out.println(a%b);
+  }
+}
 ```
 
 
@@ -110,7 +144,14 @@ class Main{
 ## [A/B](https://www.acmicpc.net/problem/1008)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println(sc.nextInt() / sc.nextDouble());
+  }
+}
 ```
 
 
@@ -133,7 +174,22 @@ class Main{
 ## [두 수 비교하기](https://www.acmicpc.net/problem/1330)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    if (a<b) {
+      System.out.println("<");
+    } else if (a>b) {
+      System.out.println(">");
+    } else {
+      System.out.println("==");
+    }
+  }
+}
 ```
 
 
@@ -141,7 +197,25 @@ class Main{
 ## [시험 성적](https://www.acmicpc.net/problem/9498)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    if (90<=x) {
+      System.out.println('A');
+    } else if (80<=x) {
+      System.out.println('B');
+    } else if (70<=x) {
+      System.out.println('C');
+    } else if (60<=x) {
+      System.out.println('D');
+    } else {
+      System.out.println('F');
+    }
+  }
+}
 ```
 
 
@@ -149,7 +223,24 @@ class Main{
 ## [사분면 고르기](https://www.acmicpc.net/problem/14681)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    int y = sc.nextInt();
+    if (x>0&&y>0) {
+      System.out.println(1);
+    } else if (x>0&&y<0) {
+      System.out.println(4);
+    } else if (x<0&&y>0) {
+      System.out.println(2);
+    } else {
+      System.out.println(3);
+    }
+  }
+}
 ```
 
 
@@ -157,7 +248,19 @@ class Main{
 ## [윤년](https://www.acmicpc.net/problem/2753)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    if (x%4==0&&(x%100!=0||x%400==0)) {
+      System.out.println(1);
+    } else {
+      System.out.println(0);
+    }
+  }
+}
 ```
 
 
@@ -165,7 +268,14 @@ class Main{
 ## [사파리월드](https://www.acmicpc.net/problem/2420)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println(Math.abs(sc.nextLong() - sc.nextLong()));
+  }
+}
 ```
 
 
