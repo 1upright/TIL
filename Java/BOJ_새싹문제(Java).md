@@ -283,7 +283,18 @@ class Main{
 ## [N 찍기](https://www.acmicpc.net/problem/2741)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int N = sc.nextInt();
+
+    for (int i=1; i<N+1; i++) {
+      System.out.println(i);
+    }
+  }
+}
 ```
 
 
@@ -351,7 +362,24 @@ class Main{
 ## [빠른 A+B](https://www.acmicpc.net/problem/15552)
 
 ```java
+import java.io.*;
 
+class Main{
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    int N = Integer.parseInt(br.readLine());
+    for (int i=0; i<N; i++) {
+      String s = br.readLine();
+      int x = Integer.parseInt(s.split(" ")[0]);
+      int y = Integer.parseInt(s.split(" ")[1]);
+      
+      bw.write(x+y+"\n");
+    }
+    bw.flush();
+  }
+}
 ```
 
 
@@ -359,7 +387,26 @@ class Main{
 ## [X보다 작은 수](https://www.acmicpc.net/problem/10871)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int N = sc.nextInt();
+    int X = sc.nextInt();
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i=0; i<N; i++) {
+      int Y = sc.nextInt();
+      if (X > Y) {
+        sb.append(Y+" ");
+      }
+    }
+
+    System.out.println(sb);
+  }
+}
 ```
 
 
@@ -367,7 +414,31 @@ class Main{
 ## [개수 세기](https://www.acmicpc.net/problem/10807)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int N = sc.nextInt();
+    int[] nums = new int[N];
+    int cnt = 0;
+
+    for (int i=0; i<N; i++) {
+      nums[i] = sc.nextInt();
+    }
+    
+    int v = sc.nextInt();
+
+    for(int i=0; i<N; i++) {
+      if (nums[i] == v) {
+        cnt ++;
+      }
+    }
+
+    System.out.println(cnt);
+  }
+
+}
 ```
 
 
