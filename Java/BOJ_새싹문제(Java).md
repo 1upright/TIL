@@ -508,7 +508,15 @@ class Main{
 ## [아스키 코드](https://www.acmicpc.net/problem/11654)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.next().charAt(0);
+    System.out.println(n);
+  }
+}
 ```
 
 
