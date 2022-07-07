@@ -524,7 +524,15 @@ class Main{
 ## [단어 길이 재기](https://www.acmicpc.net/problem/2743)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.next().length();
+    System.out.println(n);
+  }
+}
 ```
 
 
