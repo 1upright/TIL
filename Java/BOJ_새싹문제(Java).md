@@ -540,7 +540,29 @@ class Main{
 ## [대소문자 바꾸기](https://www.acmicpc.net/problem/2744)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    char [] arr;
+    arr = s.toCharArray();
+
+    for (int i=0; i<arr.length; i++) {
+      String c = String.valueOf(arr[i]);
+      int x = arr[i];
+      
+      if (65 <= x && x < 91) {
+        System.out.print(c.toLowerCase());
+      }
+      if (97 <= x && x < 123) {
+        System.out.print(c.toUpperCase());
+      }
+
+    }
+  }
+}
 ```
 
 
