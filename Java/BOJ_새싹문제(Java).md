@@ -648,7 +648,26 @@ class Main{
 ## [5의 수난](https://www.acmicpc.net/problem/23037)
 
 ```java
+import java.util.*;
 
+class Main {
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		String s = sc.next();
+		int [] arr = new int[s.length()];
+		
+		for (int i=0; i<s.length(); i++) {
+			arr[i] = s.charAt(i)-'0';
+		}
+		
+		int res = 0;
+		for (int i=0; i<s.length(); i++) {
+			res += Math.pow(arr[i], 5);
+		}
+		
+		System.out.println(res);
+	}
+}
 ```
 
 
