@@ -601,7 +601,30 @@ class Main{
 ## [알파벳 찾기](https://www.acmicpc.net/problem/10809)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.next();
+
+    int[] arr = new int[26];
+    for (int i=0; i<26; i++) {
+      arr[i] = -1;
+    }
+
+    for (int i=0; i<s.length(); i++) {
+      char c = s.charAt(i);
+      if (arr[c-'a']  == -1) {
+        arr[c-'a'] = i;
+      }
+    }
+
+    for (int i=0; i<26; i++) {
+      System.out.print(arr[i]+" ");
+    }
+  }
+}
 ```
 
 
