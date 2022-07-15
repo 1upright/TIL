@@ -323,7 +323,20 @@ class Main{
 ## [A+B - 3](https://www.acmicpc.net/problem/10950)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int T = sc.nextInt();
+    
+    for (int i=0; i<T; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      System.out.println(a+b);
+    }
+  }
+}
 ```
 
 
@@ -331,7 +344,22 @@ class Main{
 ## [A+B - 5](https://www.acmicpc.net/problem/10952)
 
 ```java
+import java.util.*;
 
+class Main{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    while (true) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      if (a==0 && b==0) {
+        break;
+      }
+      System.out.println(a+b);
+    }
+  }
+}
 ```
 
 
