@@ -797,3 +797,25 @@ class Main {
 }
 ```
 
+
+
+## [검증수](https://www.acmicpc.net/problem/2475)
+
+```java
+import java.util.Scanner;
+
+class Main {
+	static public void main(String []args) {
+		Scanner sc = new Scanner(System.in);
+
+        int res = 0;
+        for (int i=0; i<5; i++) {
+            int x = sc.nextInt();
+            res += x*x;
+        }
+
+        System.out.println(res%10);
+    }
+}
+```
+
